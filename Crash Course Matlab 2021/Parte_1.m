@@ -29,14 +29,12 @@ disp('Vamos a calcular el resultado!');
 fprintf("El resultado de las anteriores operaciones es %.f \n", result);
 fprintf("El resultado ha sido correcto");
 
-%%
 %Operaciones más avanzadas
 pot = variable_1^variable_2;       %Potencias 
 sq = sqrt(variable_1);             %Raíz cuadrada (solo la cuadrada!) 
 variable_1 = -1;                   %Reasignación de valor a la variable variable_1
 sqC = sqrt(variable_1);            %Raíz cuadrada (en el plano complejo!)
 
-%%
 %¿Cómo se calculan las funciones seno o coseno? ----> https://es.mathworks.com/
 
 % Operaciones con matrices (the best!)
@@ -81,7 +79,6 @@ InvMatrix1 = inv(matrix_1);                         %Inversa de una matriz
 InvMatrix2 = matrix_1^(-1);                         %Inversa de una matriz. Y si ponemos .^? Observa la diferencia en el cómputo numérico!
 [W, eigs] = eig(InvMatrix2);                        %Análisis del espectro de una matrix
 
-%%
 %Definiciones importantes 
 xmax = 1;                                           %Longitud máxima
 dx = 1e-3;                                          %Paso 
@@ -96,7 +93,6 @@ pol = [1 2 3];
 pol2 = poly(pol);
 solutions = roots(pol2);
 
-%%
 % Ploteo y gráficas: https://www.mathworks.com/help/matlab/creating_plots/types-of-matlab-plots.html
 x = 0:1e-1:1;
 y1 = 2+4*x; 
@@ -115,7 +111,6 @@ ylabel('Eje y');
 title('Gráfica de prueba'); 
 grid on;
 
-%%
 % Ejercicio 0
 % Sergio tiene 3 gatos y dos perros. En total, pesan 30 kg. Los dos perros menos un gato
 % pesan 10 kg. Todos los perros pesan lo mismo, igual para los gatos. Resuleve para ambos pesos en forma matricial.
@@ -127,7 +122,6 @@ A = [A; 2 4];
 b = [b; 7.5]; 
 sol = pinv(A)*b;
 
-%%
 % Ejercicio 1
 % Representar la trayectoria de un avión que describe una hélice de radio 10, ascendiendo por el eje z.
 % PISTA: para pasar 3 coordenadas, utiliza la función plot3 en vez de plot.
@@ -143,7 +137,6 @@ plot3(x(50), y(50), z(20), 'or');
 hold off
 grid on; 
 
-%%
 % Ejercicio 2
 % Vamos a calcular el campo de velocidades de un determinado flujo
 % potencial (aerodinámico, eléctrico, gravitatorio (?)). El espacio de configuración es de 2 x 2 metros (R2). 
