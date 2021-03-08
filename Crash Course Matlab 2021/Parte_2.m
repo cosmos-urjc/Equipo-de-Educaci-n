@@ -1,3 +1,30 @@
+%% Anexo: Interfaz con archivos externos. 
+% ¿Cómo leer de un excel? 
+launcher_table = readtable('Case.xlsx', 'Sheet', 'Launcher');
+
+% ¿Cómo escribir en un .txt? 
+%Export the solution to a .txt file
+fileID = 'launcher_solution.txt'; 
+file = fopen(fileID, 'w');
+
+fprintf(file, 'Payload: %4f kg \n', 10e3); 
+fprintf(file, '\n');
+
+fprintf(file, 'Orbital conditions and requirements: \n');
+fprintf(file, '    Orbital insertion velocity: %4.4f km/s \n', 8.32456e3);
+fprintf(file, '    Velocity loss: %4f km/s \n', 2e3);
+fprintf(file, '    Initial inertial velocity: %4f m/s \n', 2e3);
+fprintf(file, '    Total insertion velocity: %4f km/s \n',  8e3);
+fprintf(file, '\n');
+fclose(file);
+    
+% ¿Cómo leer de un .txt?
+fileID = 'launcher_solution.txt'; 
+file = fopen(fileID, 'r');
+A = fscanf(file); 
+B = load(file); 
+fclose(file);
+
 %% Parte 2: Matlab como entorno de programación 
 % Algo de teoría: ¿Qué ofrece Matlab como lenguaje de programación? 
 
