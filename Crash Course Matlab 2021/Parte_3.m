@@ -69,7 +69,7 @@ options = odeset('RelTol',RelTol,'AbsTol',AbsTol);
 plot3(X(:,1),X(:,2),X(:,3));
 grid on;
 
-%Ejemplo de integración vectorizada: Sistema de Lorenz
+%% Código vectorizado: sistema de Lorenz
 %Parámetros del sistema
 beta = [10;8/3;28];
 
@@ -97,14 +97,14 @@ dt = 0.01;
 tspan = 0:dt:tf-dt; 
 
 % Ejemplo 1: el sistema de Lorenz para un conjunto de condiciones iniciales
-% sin código vectorizado
+% sin código vectorizado (no funciona)
 % for i = 1:size(tspan,2)
 %     t = dt*i; 
 %     for j = 1:size(xvec,2) 
 %         for k = 1:size(yvec,2)
 %             for z = 1:size(zvec,2)
 %                 y_in = X(:,j,k,z); 
-%                 y_out = rk4singlestep(@(t,y)loren_dynamics(t,y,beta), dt, t, y_in);
+%                 [~,y_out] = ode45(@(t,y)lorenz_data(t,y,beta), [0 dt], y_in);
 %                 y_trajec(:,j,k,z) = y_out;
 %             end
 %         end
@@ -113,6 +113,7 @@ tspan = 0:dt:tf-dt;
 %     axis([-40 40 -40 40 -40 40]);
 % end
 
+% Con código vectorizado
 y_in = X;
 for i = 1:size(tspan,2)
     t = dt*i; 
@@ -121,8 +122,10 @@ for i = 1:size(tspan,2)
     plot3(y_trajec(1,:), y_trajec(2,:), y_trajec(3,:), 'r.', 'LineWidth', 1, 'MarkerSize',1);
     axis([-40 40 -40 40 -40 40]);
     view(20,40)
+    grid on;
     drawnow
 end
+
 
 %% Funciones auxiliares 
 function [duout] = burguers(~, u, L, nu)
